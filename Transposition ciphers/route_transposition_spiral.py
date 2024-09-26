@@ -15,57 +15,98 @@ def main():
 def encryptMessage(key, message):
 
 	cipherText = ''
-
 	g = len(message) % key
-
 	pointer = 0
+	#pointer = pointer_b
+	#key = key_b
 
-	while pointer < key:
-
-		cipherText = cipherText + message[pointer]
-		pointer = pointer + 1
-
-	
-	print(pointer)
-
-	pointer = pointer + (key - 1)
-	print(pointer)
-
-	while pointer < len(message):
-
-		cipherText = cipherText + message[pointer]
-		pointer = pointer + key
-		
-
-	print(pointer)
+	ne = key
 
 	if g > 0:
 
-		pointer = pointer - (key - g)
-
-		while pointer >= len(message) - g:
-
-			cipherText = cipherText + message[pointer]
-			pointer = pointer - 1
+		se = len(message) - g
 
 	elif g == 0:
 
-		pointer = pointer - (key + 1)
+	 	se = len(message)
 
-		while pointer >= len(message) - key:
+	no = 0
+
+
+
+	while len(cipherText) < len(message):
+
+		print(pointer)
+
+		while pointer < ne:
 
 			cipherText = cipherText + message[pointer]
-			pointer = pointer - 1
+			pointer = pointer + 1
 
-	print(pointer)
+	
+		print(pointer)
 
-	pointer = pointer - (key - 1)
+		pointer = pointer + (key - 1)
+		print(pointer)
+
+		while pointer < se:
+
+			cipherText = cipherText + message[pointer]
+			pointer = pointer + key
+		
+
+		print(pointer)
+
+		if g > 0:
+
+			pointer = pointer - (key - g)
+
+			while pointer >= se:
+
+				cipherText = cipherText + message[pointer]
+				pointer = pointer - 1
+
+		elif g == 0:
+
+			pointer = pointer - (key + 1)
+			print(pointer)
+
+			while pointer >= se - key:
+
+				cipherText = cipherText + message[pointer]
+				pointer = pointer - 1
+
+		print(pointer)
+
+		pointer = pointer - (key - 1)
 
 
-	while pointer > 0:
+		while pointer > no:
 
-		cipherText = cipherText + message[pointer]
-		pointer = pointer - key
+			cipherText = cipherText + message[pointer]
+			pointer = pointer - key
+
+		if len(cipherText) == len(message):
+
+			break
+
+		print(pointer)
+
+
+
+		pointer = pointer + (key + 1)
+		no = no + (key + 1)
+		ne = key + (key - 1)
+		#key = key - 2
+		g = 0
+
+		if g > 0:
+
+			se = len(message) - g - 1
+
+		elif g == 0:
+
+	 		se = len(message) - (key - 1)
 
 	return cipherText
  
