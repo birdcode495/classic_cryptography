@@ -12,23 +12,26 @@ def main():
 	pyperclip.copy(cipherText)
 
 
+
+
 def encryptMessage(key, message):
 
 	cipherText = ''
-	g = len(message) % key
+	
 	pointer = 0
 	#pointer = pointer_b
 	#key = key_b
 
 	ne = key
 
+	g = len(message) % key
+
 	if g > 0:
 
-		se = len(message) - g
+		message = message + (' ' * (key - g))
+		g = 0 
 
-	elif g == 0:
-
-	 	se = len(message)
+	se = len(message)
 
 	no = 0
 
@@ -43,6 +46,10 @@ def encryptMessage(key, message):
 			cipherText = cipherText + message[pointer]
 			pointer = pointer + 1
 
+		if len(cipherText) == len(message):
+
+			break
+
 	
 		print(pointer)
 
@@ -53,20 +60,16 @@ def encryptMessage(key, message):
 
 			cipherText = cipherText + message[pointer]
 			pointer = pointer + key
-		
 
+		if len(cipherText) == len(message):
+
+			break
+
+			
+			
 		print(pointer)
 
-		if g > 0:
-
-			pointer = pointer - (key - g)
-
-			while pointer >= se:
-
-				cipherText = cipherText + message[pointer]
-				pointer = pointer - 1
-
-		elif g == 0:
+		if g == 0:
 
 			pointer = pointer - (key + 1)
 			print(pointer)
@@ -86,9 +89,10 @@ def encryptMessage(key, message):
 			cipherText = cipherText + message[pointer]
 			pointer = pointer - key
 
-		if len(cipherText) == len(message):
+			if len(cipherText) == len(message):
 
-			break
+				break
+
 
 		print(pointer)
 
@@ -100,13 +104,7 @@ def encryptMessage(key, message):
 		#key = key - 2
 		g = 0
 
-		if g > 0:
-
-			se = len(message) - g - 1
-
-		elif g == 0:
-
-	 		se = len(message) - (key - 1)
+		se = len(message) - (key - 1)
 
 	return cipherText
  
