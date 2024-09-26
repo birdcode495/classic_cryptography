@@ -1,15 +1,15 @@
 import pyperclip
 
 
-# def main():
+def main():
 
-# 	myMessage = input('Enter the message to encrypt: ')
-# 	myKey = int(input('Enter key: '))
+	myMessage = input('Enter the message to encrypt: ')
+	myKey = int(input('Enter key: '))
 
-# 	cipherText = encryptMessage(myKey, myMessage)
-# 	print(cipherText)
+	cipherText = encryptMessage(myKey, myMessage)
+	print(cipherText)
 
-# 	pyperclip.copy(cipherText)
+	pyperclip.copy(cipherText)
 
 
 def encryptMessage(key, message):
@@ -57,36 +57,20 @@ def encryptMessage(key, message):
 			cipherText = cipherText + message[pointer]
 			pointer = pointer - 1
 
+	print(pointer)
 
-	# while pointer > 0:
+	pointer = pointer - (key - 1)
 
-	# 	cipherText = cipherText + message[pointer]
-	# 	pointer = pointer - key
+
+	while pointer > 0:
+
+		cipherText = cipherText + message[pointer]
+		pointer = pointer - key
 
 	return cipherText
  
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-# 	main()
-
-myMessage = input('Enter the message to encrypt: ')
-myKey = int(input('Enter key: '))
-
-cipherText = encryptMessage(myKey, myMessage)
-
-print(cipherText)
-
-
-
-
-
-
-
-
-	
-		
-	
-
-
+	main()
 
